@@ -1,0 +1,51 @@
+# model params
+backbone_type: resnet_v2_m_50
+loss_type: arcface
+out_type: E
+
+image_size: 112
+embd_size: 512
+class_num: 85742
+
+
+# hyper params
+bn_decay: 0.9
+keep_prob: 0.4
+weight_decay: !!float 5e-4
+logits_scale: 64.0
+logits_margin: 0.5
+momentum: 0.9
+
+
+# run params
+val_bn_train: False
+augment_flag: True
+augment_margin: 16
+
+gpu_num: 1
+batch_size: 70
+epoch_num: 1
+step_per_epoch: 80000
+val_freq: 5000
+
+lr_steps: [40000, 60000, 80000]
+
+lr_values: [0.004, 0.002, 0.0012, 0.0004]
+
+
+# paths
+pretrained_model: './models/best-m-5000'
+eye_model: './models/best-m-2400e6'
+mouth_model: './models/best-m-5400m6'
+face_model: './models/best-m-3600f6'
+train_data: ['./data/tfrecords/cari.tfrecord']
+#val_data: {'agedb_30': './data/dataset/faces_emore/agedb_30.bin', 'lfw': './data/dataset/faces_emore/lfw.bin', 'cfp_ff': './data/dataset/faces_emore/cfp_ff.bin', 'cfp_fp': './data/dataset/faces_emore/cfp_fp.bin', 'calfw': './data/dataset/faces_emore/calfw.bin', 'cplfw': './data/dataset/faces_emore/cplfw.bin', 'vgg2_fp': './data/dataset/faces_emore/vgg2_fp.bin'}
+#val_data: {'lfw': './data/dataset/faces_emore/lfw.bin'}
+#val_data: {'cari': './data/dataset/faces_emore/cari_test1.bin'}
+#val_data: {'manga': './data/dataset/faces_emore/manga_test.bin'}
+val_data: {'cari_face': 'D:\WorkSpace\WebCaricature\bin\cari_eyes1.bin'}
+val_data1: {'cari_eyes': 'D:\WorkSpace\WebCaricature\bin\cari_eyes6.bin'}
+val_data2: {'cari_mouths': 'D:\WorkSpace\WebCaricature\bin\cari_mouths6.bin'}
+val_data3: {'cari_face': 'D:\WorkSpace\WebCaricature\bin\cari_faces6.bin'}
+output_dir: './output'
+
